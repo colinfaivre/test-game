@@ -8,6 +8,7 @@ onMounted(() => {
   const game = new Game(canvas.value)
   window.addEventListener("keydown", (event) => game.addKeydownEvent(event.key))
   window.addEventListener("keyup", (event) => game.addKeyupEvent(event.key))
+  console.log('mapItemList', game.map.mapItemList)
 })
 </script>
 

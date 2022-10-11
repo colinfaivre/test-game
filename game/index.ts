@@ -1,11 +1,12 @@
 import { Player } from "./entities/Player"
-import { Background } from "./entities/Background";
+import { Map } from "./entities/Map";
+import { map1Blueprint } from "./data/maps";
 
 export class Game {
     canvas;
     context;
     player;
-    background;
+    map;
     
     constructor(canvas) {
         this.canvas = canvas
@@ -13,7 +14,7 @@ export class Game {
         this.canvas.width = 64 * 16
         this.canvas.height = 64 * 9
 
-        this.background = new Background(this.canvas.width, this.canvas.height);
+        this.map = new Map(map1Blueprint);
         this.player = new Player();
         
         this.loop()
@@ -22,11 +23,11 @@ export class Game {
     loop() {
         window.requestAnimationFrame(() => this.loop())
         this.render()
-        this.player.update(this.background.height)
+        this.player.update(this.map.height)
     }
     
     render() {
-        this.background.render(this.context)
+        this.map.render(this.context)
         this.player.render(this.context)
     }
 
